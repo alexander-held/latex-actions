@@ -17,3 +17,10 @@ jobs:
       run: bibtex main
     - name: third build step
       run: pdflatex main
+    - name: check for warnings
+      run: cat main.log | grep -i warning
+    - name: upload document
+      uses: actions/upload-artifact@v1
+      with:
+          name: document
+          path: main.pdf
