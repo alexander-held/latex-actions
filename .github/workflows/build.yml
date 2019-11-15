@@ -1,0 +1,19 @@
+name: "compile document"
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: blang/latex:ubuntu
+
+    steps:
+    - name: set up repository
+      uses: actions/checkout@v1
+    - name: first build step
+      run: pdflatex main
+    - name: second build step
+      run: bibtex main
+    - name: third build step
+      run: pdflatex main
